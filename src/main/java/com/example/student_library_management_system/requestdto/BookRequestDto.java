@@ -1,53 +1,17 @@
-package com.example.student_library_management_system.model;
+package com.example.student_library_management_system.requestdto;
 
-import jakarta.persistence.*;
 
-import java.util.List;
+public class BookRequestDto {
 
-@Entity
-@Table(name="book")
-public class Book {
-
-    @Id
-    @Column(name="id")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
-
-    @Column(name="title", nullable = false)
     private String title;
-
-    @Column(name="publisher_name", nullable = false)
     private String publisherName;
-
-    @Column(name="published_date", nullable = false)
     private String publishedDate;
-
-    @Column(name="pages", nullable = false)
     private int pages;
-
-    @Column(name="availability", nullable = false)
     private boolean availability;
-
-    @Column(name="category", nullable = false)
     private String category;
-
-    @Column(name="rack_no", nullable = false)
     private String rackNo;
 
-    @JoinColumn
-    @ManyToOne
-    private Card card;
-
-    @OneToMany(mappedBy = "book")
-    private List<Transaction> transactionList;
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
+    private int cardId;
 
     public String getTitle() {
         return title;
@@ -105,19 +69,11 @@ public class Book {
         this.rackNo = rackNo;
     }
 
-    public Card getCard() {
-        return card;
+    public int getCardId() {
+        return cardId;
     }
 
-    public void setCard(Card card) {
-        this.card = card;
-    }
-
-    public List<Transaction> getTransactionList() {
-        return transactionList;
-    }
-
-    public void setTransactionList(List<Transaction> transactionList) {
-        this.transactionList = transactionList;
+    public void setCardId(int cardId) {
+        this.cardId = cardId;
     }
 }
